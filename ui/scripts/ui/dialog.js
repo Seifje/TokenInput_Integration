@@ -464,6 +464,28 @@
                     if (field.defaultValue) {
                         $input.val(strOrFunc(field.defaultValue));
                     }
+                } else if (field.isTokenInput) { // jquery.tokeninput.js
+                    isAsync = true;
+                    selectArgs = {
+                        context: args.context,
+                        response: {
+                            success: function(args) {
+                                $input.tokenInput(args.data);
+                            }
+                        }
+                    };
+
+                    $input = $('<input>').attr({
+                        name: key,
+                        type: 'text'
+                    }).appendTo($value);
+
+                    $.extend(selectArgs, {
+                        $form: $form,
+                        type: 'createForm'
+                    });
+
+                    field.dataProvider(selectArgs);
                 } else if (field.isDatepicker) { //jQuery datepicker
                     $input = $('<input>').attr({
                         name: key,

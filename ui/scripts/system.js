@@ -16887,8 +16887,35 @@
                                     storageTags: {
                                         label: 'label.storage.tags',
                                         docID: 'helpPrimaryStorageTags',
+                                        isTokenInput: true,
                                         validation: {
                                             required: false
+                                        },
+                                        dataProvider: function(args) {
+                                            $.ajax({
+                                                url: createURL("listStorageTags"),
+                                                dataType: "json",
+                                                success: function (json) {
+                                                    var item = json.liststoragetagsresponse.storagetag;
+                                                    item =  [
+                                                        { // Row 1
+                                                            id: '1',
+                                                            name: 'dataFieldB1'
+                                                        },
+                                                        { // Row 2
+                                                             id: '2',
+                                                            name: 'dataFieldB2'
+                                                        }
+                                                    ];
+                                                    args.response.success({
+                                                        data: item
+                                                    });
+                                                },
+                                                error: function (XMLHttpResponse) {
+                                                    var errorMsg = parseXMLHttpResponse(XMLHttpResponse);
+                                                    args.response.error(errorMsg);
+                                                }
+                                            });
                                         }
                                     }
                                     //always appear (end)
