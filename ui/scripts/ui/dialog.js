@@ -470,7 +470,10 @@
                         context: args.context,
                         response: {
                             success: function(args) {
-                                $input.tokenInput(args.data);
+                                $input.tokenInput(args.data,{
+  
+                               theme: "facebook"
+                                                        });
                             }
                         }
                     };
