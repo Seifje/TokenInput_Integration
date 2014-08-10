@@ -32,7 +32,7 @@
         <title></title>
         <link type="text/css" rel="stylesheet" href="lib/reset.css"/>
         <link type="text/css" rel="stylesheet" href="css/cloudstack3.css" />
-        <link type="text/css" rel="stylesheet" href="css/token-input.css" />
+        <link type="text/css" rel="stylesheet" href="css/token-input-facebook.css" />
         <c:if test="${!empty cookie.lang && cookie.lang.value != 'en'}">
             <link type="text/css" rel="stylesheet" href="css/cloudstack3.${cookie.lang.value}.css" />
         </c:if>
