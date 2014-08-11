@@ -16897,6 +16897,12 @@
                                                 dataType: "json",
                                                 success: function (json) {
                                                     var item = json.liststoragetagsresponse.storagetag;
+                                                    var tags =$.map(item, function (tag) {
+                                                            return {
+                                                                id: tag.name,
+                                                                name: tag.name
+                                                            };
+                                                        });
                                                     item =  [
                                                         { // Row 1
                                                             id: '1',
@@ -16907,6 +16913,7 @@
                                                             name: 'dataFieldB2'
                                                         }
                                                     ];
+
                                                     args.response.success({
                                                         data: item
                                                     });
